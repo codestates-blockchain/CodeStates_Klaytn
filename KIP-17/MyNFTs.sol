@@ -1559,16 +1559,16 @@ contract MyNFTs is KIP17Full, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    mapping(uint256 => mapping(uint256 => bool)) badge;
-    // {
-    //     tokenId: {
-    //         badgId: T,
-    //         badgId: F,
-    //     }
-    // }
-
+    /**
+     * 1번째 인자 - MyNFTs: NFT 이름(콜렉션 이름). 
+     * 2번째 인자 - MNFT: NFT 심볼.
+     * 자유롭게 지정 가능.
+     */
     constructor() public KIP17Full("MyNFTs", "MNFT") {}
 
+    /**
+     * msg.sender(자기 자신) 주소 에게 민팅.
+     */
     function mintNFT(string memory tokenURI)
         public
         onlyOwner
@@ -1583,8 +1583,23 @@ contract MyNFTs is KIP17Full, Ownable {
         return newItemId;
     }
 
-    function loadBadge(uint256 tokenId, uint256 badgeId) public returns (bool) {
-        return badge[tokenId][badgeId];
+    /**
+     * recipient 주소 에게 민팅.
+     */
+    /*
+    function mintNFT(address recipient, string memory tokenURI)
+        public
+        onlyOwner
+        returns (uint256)
+    {
+        _tokenIds.increment();
+
+        uint256 newItemId = _tokenIds.current();
+        _mint(recipient, newItemId);
+        _setTokenURI(newItemId, tokenURI);
+
+        return newItemId;
     }
+    */
 
 }
