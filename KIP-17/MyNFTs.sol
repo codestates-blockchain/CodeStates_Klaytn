@@ -1569,6 +1569,7 @@ contract MyNFTs is KIP17Full, Ownable {
     /**
      * msg.sender(자기 자신) 주소 에게 민팅.
      */
+     /*
     function mintNFT(string memory tokenURI)
         public
         onlyOwner
@@ -1582,11 +1583,11 @@ contract MyNFTs is KIP17Full, Ownable {
 
         return newItemId;
     }
+    */
 
     /**
      * recipient 주소 에게 민팅.
      */
-    /*
     function mintNFT(address recipient, string memory tokenURI)
         public
         onlyOwner
@@ -1600,6 +1601,4 @@ contract MyNFTs is KIP17Full, Ownable {
 
         return newItemId;
     }
-    */
-
 }
